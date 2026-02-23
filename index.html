@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappa Personale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: float linear infinite;
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            animation: float linear infinite;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes floatImages {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(220, 20, 60, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .section {
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pregi {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+        }
+
+        .difetti {
+            background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: white;
+        }
+
+        .list-item {
+            background: white;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b9d;
+            transition: transform 0.2s;
+        }
+
+        .list-item:hover {
+            transform: translateX(10px);
+        }
+
+        .difetti .list-item {
+            border-left-color: #6c5ce7;
+        }
+
+        .list-item p {
+            color: #2d3436;
+            font-weight: 500;
+        }
+
+        .list-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .list-item a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="heart-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,1 C 0.5,1 0,0.75 0,0.5 C 0,0.35 0.1,0.25 0.25,0.25 C 0.35,0.25 0.5,0.35 0.5,0.35 C 0.5,0.35 0.65,0.25 0.75,0.25 C 0.9,0.25 1,0.35 1,0.5 C 1,0.75 0.5,1 0.5,1 Z"/>
+            </clipPath>
+            <clipPath id="star-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.5,0 L 0.61,0.35 L 1,0.35 L 0.68,0.57 L 0.79,0.91 L 0.5,0.68 L 0.21,0.91 L 0.32,0.57 L 0,0.35 L 0.39,0.35 Z"/>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <img src="File multimediali (1).jfif" alt="Foto 1" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite;">
+            <img src="File multimediali (2).jfif" alt="Foto 2" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 0.5s;">
+            <img src="File multimediali.jfif" alt="Foto 3" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 1s;">
+        </div>
+        <h1>💖 nano da giardino 💖</h1>
+
+        <div class="content">
+            <div class="section pregi">
+                <h2>✨ Pregi di Smucci</h2>
+                <div class="list-item">
+                    <p>Disponibile e gentile</p>
+                </div>
+                <div class="list-item">
+                    <p>Affidabile e leale</p>
+                </div>
+                <div class="list-item">
+                    <p>Intelligente e sincera</p>
+                </div>
+                <div class="list-item">
+                    <p>Premurosa</p>
+                </div>
+            </div>
+
+            <div class="section difetti">
+                <h2>🌱 Difetti di Smucci</h2>
+                <div class="list-item">
+                    <p>Gestione dello stress</p>
+                </div>
+                <div class="list-item">
+                    <a href="https://www.google.com/search?q=prosciutto" target="_blank">
+                        <p>Mangia il prosciutto</p>
+                    </a>
+                </div>
+                <div class="list-item">
+                    <p>Non arrabbiarsi con la prof di economia</p>
+                </div>
+                <div class="list-item">
+                    <p>Studiare economia aziendale</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://www.youtube.com/results?search_query=Annarè+Gigi+D'alessio" target="_blank" style="font-size: 2.5em; cursor: pointer; text-decoration: none; display: inline-block; animation: floatImages 3s ease-in-out infinite;">
+                ❤️
+            </a>
+            <p style="color: white; font-size: 1.2em; margin-top: 10px; font-weight: bold;">Questa è per te</p>
+        </div>
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('heartsContainer');
+        const colors = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤍', '🤎'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = colors[Math.floor(Math.random() * colors.length)];
+
+            const duration = Math.random() * 3 + 4; // 4-7 secondi
+            const left = Math.random() * 100; // 0-100%
+            const delay = Math.random() * 0.5;
+
+            heart.style.left = left + '%';
+            heart.style.animationDuration = duration + 's';
+            heart.style.animationDelay = delay + 's';
+            heart.style.transform = `translateX(${(Math.random() - 0.5) * 200}px)`;
+
+            heartsContainer.appendChild(heart);
+
+            // Rimuovere il cuore dopo l'animazione per evitare memory leak
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Creare cuori ogni 300ms
+        setInterval(createHeart, 300);
+
+        // Creare alcuni cuori iniziali
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+
+        // Funzione per creare testo animato
+        function createFloatingText() {
+            const text = document.createElement('div');
+            text.className = 'floating-text';
+            text.textContent = 'bidello much';
+
+            const duration = Math.random() * 4 + 6; // 6-10 secondi
+            const left = Math.random() * 100; // 0-100%
+            const delay = Math.random() * 0.5;
+
+            text.style.left = left + '%';
+            text.style.animationDuration = duration + 's';
+            text.style.animationDelay = delay + 's';
+            text.style.transform = `translateX(${(Math.random() - 0.5) * 300}px)`;
+
+            heartsContainer.appendChild(text);
+
+            // Rimuovere il testo dopo l'animazione
+            setTimeout(() => {
+                text.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Creare testo ogni 500ms
+        setInterval(createFloatingText, 500);
+
+        // Creare alcuni testi iniziali
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingText, i * 200);
+        }
+    </script>
+</body>
+</html>
