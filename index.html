@@ -81,6 +81,11 @@
             }
         }
 
+        @keyframes glitter {
+            0%, 100% { box-shadow: 0 0 10px 2px rgba(255,255,255,0.8); }
+            50% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+        }
+
         .container {
             position: relative;
             z-index: 10;
@@ -90,10 +95,9 @@
             max-width: 900px;
             width: 90%;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            /* red wavy, glittery border */
+            /* red wavy border with sparkling glitter pattern */
             border: 8px solid transparent;
-            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M0,20 Q10,0 20,20 T40,20" fill="none" stroke="red" stroke-width="5"/></svg>') 10 round;
-            animation: glitterBorder 2s linear infinite;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><defs><pattern id="glitter" patternUnits="userSpaceOnUse" width="60" height="60"><rect width="60" height="60" fill="red"/><circle cx="10" cy="10" r="2" fill="white"/><circle cx="30" cy="20" r="1" fill="white"/><circle cx="50" cy="40" r="1.5" fill="white"/><circle cx="20" cy="50" r="2" fill="white"/></pattern></defs><path d="M0,30 Q15,0 30,30 T60,30" fill="none" stroke="url(%23glitter)" stroke-width="5"/></svg>') 15 round;
         }
 
         h1 {
@@ -177,14 +181,7 @@
         }
 
         /* glitter animation for borders */
-        @keyframes glitterBorder {
-            0%, 100% {
-                box-shadow: 0 0 15px 3px rgba(255,255,255,0.8);
-            }
-            50% {
-                box-shadow: 0 0 25px 5px rgba(255,255,255,1);
-            }
-        }
+
     </style>
 </head>
 <body>
