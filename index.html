@@ -90,6 +90,10 @@
             max-width: 900px;
             width: 90%;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            /* red wavy, glittery border */
+            border: 8px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"><path d="M0,20 Q10,0 20,20 T40,20" fill="none" stroke="red" stroke-width="5"/></svg>') 10 round;
+            animation: glitterBorder 2s linear infinite;
         }
 
         h1 {
@@ -171,6 +175,16 @@
                 font-size: 1.8em;
             }
         }
+
+        /* glitter animation for borders */
+        @keyframes glitterBorder {
+            0%, 100% {
+                box-shadow: 0 0 15px 3px rgba(255,255,255,0.8);
+            }
+            50% {
+                box-shadow: 0 0 25px 5px rgba(255,255,255,1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -189,9 +203,9 @@
 
     <div class="container">
         <div style="text-align: center; margin-bottom: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <img src="File multimediali (1).jfif" alt="Foto 1" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite;">
-            <img src="File multimediali (2).jfif" alt="Foto 2" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 0.5s;">
-            <img src="File multimediali.jfif" alt="Foto 3" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid white; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 1s;">
+            <img src="File multimediali (1).jfif" alt="Foto 1" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid transparent; border-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M0,10 Q5,0 10,10 T20,10&quot; fill=&quot;none&quot; stroke=&quot;red&quot; stroke-width=&quot;2&quot;/></svg>') 5 round; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite; animation: floatImages 3s ease-in-out infinite; animation: glitterBorder 2s linear infinite;">
+            <img src="File multimediali (2).jfif" alt="Foto 2" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid transparent; border-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M0,10 Q5,0 10,10 T20,10&quot; fill=&quot;none&quot; stroke=&quot;red&quot; stroke-width=&quot;2&quot;/></svg>') 5 round; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 0.5s; animation: glitterBorder 2s linear infinite;">
+            <img src="File multimediali.jfif" alt="Foto 3" style="width: 200px; height: 200px; clip-path: url(#heart-clip); border: 5px solid transparent; border-image: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;20&quot; height=&quot;20&quot;><path d=&quot;M0,10 Q5,0 10,10 T20,10&quot; fill=&quot;none&quot; stroke=&quot;red&quot; stroke-width=&quot;2&quot;/></svg>') 5 round; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); object-fit: contain; animation: floatImages 3s ease-in-out infinite 1s; animation: glitterBorder 2s linear infinite;">
         </div>
         <h1>💖 nano da giardino 💖</h1>
 
